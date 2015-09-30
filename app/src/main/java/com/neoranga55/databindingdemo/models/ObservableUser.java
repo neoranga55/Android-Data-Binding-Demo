@@ -1,23 +1,17 @@
 package com.neoranga55.databindingdemo.models;
 
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.text.Editable;
 import android.text.TextWatcher;
+
+import com.neoranga55.databindingdemo.BR;
 
 
 public class ObservableUser extends BaseObservable {
 
-    private String name;
-
-    private String lastName;
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    private String name = "";
+    private String lastName = "";
 
     public String getName() {
         return name;
@@ -25,6 +19,14 @@ public class ObservableUser extends BaseObservable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public final TextWatcher nameChanged = new TextWatcher() {
@@ -41,6 +43,7 @@ public class ObservableUser extends BaseObservable {
         @Override
         public void afterTextChanged(Editable s) {
             setName(s.toString());
+            notifyPropertyChanged(BR.formattedUser);
         }
     };
 
@@ -58,6 +61,12 @@ public class ObservableUser extends BaseObservable {
         @Override
         public void afterTextChanged(Editable s) {
             setLastName(s.toString());
+            notifyPropertyChanged(BR.formattedUser);
         }
     };
+
+    @Bindable
+    public String getFormattedUser() {
+        return name + " " + lastName;
+    }
 }
