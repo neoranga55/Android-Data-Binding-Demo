@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import com.neoranga55.databindingdemo.databinding.MainActivityBinding;
 import com.neoranga55.databindingdemo.viewmodels.UserFormViewModel;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements UserFormViewModel.UserFormView {
 
     private MainActivityBinding mBinding;
 

@@ -1,17 +1,15 @@
 package com.neoranga55.databindingdemo.viewmodels;
 
-import android.app.Activity;
 import android.view.View;
 
-import com.neoranga55.databindingdemo.MainActivity;
 import com.neoranga55.databindingdemo.models.ObservableUser;
 
 public class UserFormViewModel {
     private final ObservableUser mUser;
-    private final MainActivity mActivity;
+    private final UserFormView mUserFormView;
 
-    public UserFormViewModel(MainActivity activity) {
-        mActivity = activity;
+    public UserFormViewModel(UserFormView userFormView) {
+        mUserFormView = userFormView;
         mUser = new ObservableUser();
     }
 
@@ -31,7 +29,11 @@ public class UserFormViewModel {
 
         @Override
         public void onClick(View v) {
-            mActivity.cleanUserDataFields();
+            mUserFormView.cleanUserDataFields();
         }
     };
+
+    public interface UserFormView {
+        public void cleanUserDataFields();
+    }
 }
