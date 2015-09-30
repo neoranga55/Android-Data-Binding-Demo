@@ -2,8 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
-            name="user"
-            type="com.neoranga55.databindingdemo.models.ObservableUser"/>
+            name="userViewModel"
+            type="com.neoranga55.databindingdemo.viewmodels.UserFormViewModel"/>
     </data>
     <LinearLayout
         android:orientation="vertical"
@@ -21,7 +21,7 @@
             android:ems="10"
             android:layout_gravity="center_horizontal"
             android:hint="Name"
-            android:addTextChangedListener="@{user.nameChanged}" />
+            android:addTextChangedListener="@{userViewModel.user.nameChanged}" />
 
         <EditText
             android:id="@+id/lastNameEditText"
@@ -31,7 +31,7 @@
             android:ems="10"
             android:layout_gravity="center_horizontal"
             android:hint="Last Name"
-            android:addTextChangedListener="@{user.lastNameChanged}" />
+            android:addTextChangedListener="@{userViewModel.user.lastNameChanged}" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@{user.formattedUser}"
+                android:text="@{userViewModel.user.formattedUser}"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="40dp" />
@@ -54,7 +54,8 @@
                 android:layout_height="wrap_content"
                 android:text="Clean text"
                 android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:onClick="@{userViewModel.clearUserDataListener}" />
         </RelativeLayout>
     </LinearLayout>
 </layout>

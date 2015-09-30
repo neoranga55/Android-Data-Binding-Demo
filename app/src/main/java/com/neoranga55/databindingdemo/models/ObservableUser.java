@@ -19,6 +19,7 @@ public class ObservableUser extends BaseObservable {
 
     public void setName(String name) {
         this.name = name;
+        notifyPropertyChanged(BR.formattedUser);
     }
 
     public String getLastName() {
@@ -27,6 +28,7 @@ public class ObservableUser extends BaseObservable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+        notifyPropertyChanged(BR.formattedUser);
     }
 
     public final TextWatcher nameChanged = new TextWatcher() {
@@ -43,7 +45,6 @@ public class ObservableUser extends BaseObservable {
         @Override
         public void afterTextChanged(Editable s) {
             setName(s.toString());
-            notifyPropertyChanged(BR.formattedUser);
         }
     };
 
@@ -61,7 +62,6 @@ public class ObservableUser extends BaseObservable {
         @Override
         public void afterTextChanged(Editable s) {
             setLastName(s.toString());
-            notifyPropertyChanged(BR.formattedUser);
         }
     };
 

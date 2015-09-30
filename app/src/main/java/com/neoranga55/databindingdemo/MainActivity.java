@@ -1,21 +1,23 @@
 package com.neoranga55.databindingdemo;
 
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.neoranga55.databindingdemo.databinding.MainActivityBinding;
-import com.neoranga55.databindingdemo.models.ObservableUser;
+import com.neoranga55.databindingdemo.viewmodels.UserFormViewModel;
 
 public class MainActivity extends AppCompatActivity {
+
+    private MainActivityBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MainActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.main_activity);
-        binding.setUser(new ObservableUser());
+        mBinding = DataBindingUtil.setContentView(this, R.layout.main_activity);
+        mBinding.setUserViewModel(new UserFormViewModel(this));
     }
 
     @Override
@@ -38,5 +40,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void cleanUserDataFields() {
+        mBinding.nameEditText.setText("");
+        mBinding.lastNameEditText.setText("");
     }
 }
