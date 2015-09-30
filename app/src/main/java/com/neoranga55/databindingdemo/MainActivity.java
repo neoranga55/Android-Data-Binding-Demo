@@ -1,16 +1,21 @@
 package com.neoranga55.databindingdemo;
 
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.neoranga55.databindingdemo.databinding.MainActivityBinding;
+import com.neoranga55.databindingdemo.models.ObservableUser;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        MainActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.main_activity);
+        binding.setUser(new ObservableUser());
     }
 
     @Override
