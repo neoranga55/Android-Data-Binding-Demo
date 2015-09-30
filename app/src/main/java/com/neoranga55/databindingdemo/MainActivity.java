@@ -42,6 +42,10 @@ public class MainActivity extends AppCompatActivity implements UserFormViewModel
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Clear UI fields
+     * This triggers the modification of the data model automatically
+     */
     public void cleanUserDataFields() {
         mBinding.nameEditText.setText("");
         mBinding.lastNameEditText.setText("");

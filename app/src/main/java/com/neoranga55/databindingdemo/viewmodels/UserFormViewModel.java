@@ -17,14 +17,6 @@ public class UserFormViewModel {
         return mUser;
     }
 
-    public void setUserName(String name) {
-        mUser.setName(name);
-    }
-
-    public void setUserLastName(String lastName) {
-        mUser.setLastName(lastName);
-    }
-
     public View.OnClickListener clearUserDataListener = new View.OnClickListener() {
 
         @Override
